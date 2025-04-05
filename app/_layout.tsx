@@ -1,3 +1,4 @@
+// app/index.tsx
 import React, {useEffect, useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
@@ -8,7 +9,7 @@ dayjs.extend(duration);
 
 const PAYDAY = dayjs().startOf('month').add(1, 'month').date(27).hour(0).minute(0).second(0); // prossimo 27
 
-export default function App() {
+export default function Home() {
   const [remaining, setRemaining] = useState(getRemainingTime());
 
   useEffect(() => {
