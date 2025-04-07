@@ -3,6 +3,7 @@ import {Modal, View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {Picker} from '@react-native-picker/picker'; // Assicurati di installare questa libreria
 import {Colors} from 'src/config/colors';
 import {useThemeStore} from 'src/store/themeStore';
+import CustomButton from './CustomButton';
 
 interface ChangePaydayModalProps {
   visible: boolean;
@@ -52,27 +53,20 @@ const ChangePaydayModal: React.FC<ChangePaydayModalProps> = ({visible, onClose, 
     buttonContainer: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      width: '100%'
+      width: '100%',
+      gap: 10
     },
     button: {
-      flex: 1,
-      marginHorizontal: 5,
-      backgroundColor: colors.PRIMARY,
-      padding: 10,
-      borderRadius: 5,
-      alignItems: 'center'
-    },
-    buttonText: {
-      color: 'white',
-      fontWeight: 'bold'
+      flex: 1
     }
   });
 
   return (
-    <Modal visible={visible} transparent animationType="slide">
+    <Modal visible={visible} transparent animationType="fade">
       <View style={styles.overlay}>
         <View style={styles.modalContainer}>
-          <Text style={styles.title}>Cambia Giorno dello Stipendio</Text>
+          <Text style={styles.title}>Scegli giorno dello stipendio</Text>
+
           <View style={styles.pickerContainer}>
             <Picker selectedValue={selectedDay} onValueChange={itemValue => setSelectedDay(itemValue)} mode="dropdown">
               {Array.from({length: 31}, (_, i) => i + 1).map(day => (
@@ -85,13 +79,10 @@ const ChangePaydayModal: React.FC<ChangePaydayModalProps> = ({visible, onClose, 
               ))}
             </Picker>
           </View>
+
           <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button} onPress={onClose}>
-              <Text style={styles.buttonText}>Annulla</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={handleSave}>
-              <Text style={styles.buttonText}>Salva</Text>
-            </TouchableOpacity>
+            <CustomButton title="Annulla" onPress={onClose} variant="secondary" style={styles.button} />
+            <CustomButton title="Salva" onPress={handleSave} variant="primary" style={styles.button} />
           </View>
         </View>
       </View>

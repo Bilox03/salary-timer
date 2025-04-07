@@ -4,6 +4,7 @@ export const Colors = {
     BACKGROUND: '#ffffff',
     TEXT_PRIMARY: '#000000',
     TEXT_SECONDARY: '#333333',
+    TEXT_BUTTON: '#000',
     BORDER: '#dddddd'
   },
   dark: {
@@ -11,6 +12,7 @@ export const Colors = {
     BACKGROUND: '#1a1a1a',
     TEXT_PRIMARY: '#ffffff',
     TEXT_SECONDARY: '#cccccc',
+    TEXT_BUTTON: '#000',
     BORDER: '#444444'
   }
 } as const;
