@@ -14,6 +14,14 @@ export const Colors = {
     TEXT_SECONDARY: '#cccccc',
     TEXT_BUTTON: '#000',
     BORDER: '#444444'
+  },
+  amoled: {
+    PRIMARY: '#ffc800',
+    BACKGROUND: '#000000',
+    TEXT_PRIMARY: '#ffffff',
+    TEXT_SECONDARY: '#bbbbbb',
+    TEXT_BUTTON: '#ffffff',
+    BORDER: '#222222'
   }
 } as const;
 

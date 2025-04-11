@@ -1,0 +1,24 @@
+{
+  "theme": "Tema",
+  "light": "CLARO",
+  "dark": "OSCURO",
+  "amoled": "AMOLED",
+  "language": "Idioma",
+  "privacy_policy": "📜 Política de Privacidad",
+  "next_payday": "Próximo día de pago:",
+  "change_day": "Cambiar día",
+  "choose_payday": "Elige el día de pago",
+  "cancel": "Cancelar",
+  "save": "Guardar",
+  "notifications": {
+    "title": "👋 ¡Hola!",
+    "messages": [
+      "¿Has hecho algo por ti hoy?",
+      "Tómate un descanso ☕",
+      "Vas por buen camino 🚀",
+      "No te rindas ahora 💪",
+      "Un pequeño paso siempre es mejor que nada",
+      "Oye, eres suficiente. Siempre. ✨"
+    ]
+  }
+}

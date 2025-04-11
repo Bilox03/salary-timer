@@ -1,0 +1,24 @@
+{
+  "theme": "Tema",
+  "light": "CHIARO",
+  "dark": "SCURO",
+  "amoled": "AMOLED",
+  "language": "Lingua",
+  "privacy_policy": "📜 Privacy Policy",
+  "next_payday": "Prossimo stipendio:",
+  "change_day": "Cambia giorno",
+  "choose_payday": "Scegli giorno dello stipendio",
+  "cancel": "Annulla",
+  "save": "Salva",
+  "notifications": {
+    "title": "👋 Hey!",
+    "messages": [
+      "Hai già fatto qualcosa per te oggi?",
+      "Prenditi una pausa ☕",
+      "Sei sulla strada giusta 🚀",
+      "Non mollare proprio ora 💪",
+      "Un piccolo passo è sempre meglio di niente",
+      "Ehi, sei abbastanza. Sempre. ✨"
+    ]
+  }
+}

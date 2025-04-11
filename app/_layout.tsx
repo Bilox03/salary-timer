@@ -1,167 +1,39 @@
-import React, {useEffect, useState, useRef} from 'react';
-import {View, Text, StyleSheet, StatusBar} from 'react-native';
-import {AnimatedCircularProgress} from 'react-native-circular-progress';
-import dayjs from 'dayjs';
-import duration from 'dayjs/plugin/duration';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
-import {Colors} from 'src/config/colors';
-import {useThemeStore} from 'src/store/themeStore';
-import CustomButton from 'src/components/CustomButton';
-import ChangePaydayModal from 'src/components/ChangePaydayModal';
+import {Stack} from 'expo-router';
+import {useEffect} from 'react';
+import {StatusBar, View} from 'react-native';
+import AppBar from '@/components/AppBar';
+import NotificationManager from '@/components/NotificationManager';
+import {Colors} from '@/config/colors';
+import {usePaydayStore} from '@/store/paydayStore';
+import {useThemeStore} from '@/store/themeStore';
+import {useLanguageStore} from '@/store/languageStore';
+import i18n from '@/config/i18n';
 
-dayjs.extend(duration);
-dayjs.extend(customParseFormat);
-dayjs.locale('it'); // Imposta la lingua italiana
+const Layout = () => {
+  const {loadLanguage} = useLanguageStore();
+  const colors = Colors[useThemeStore(s => s.theme)];
+  const {theme, loadTheme} = useThemeStore();
 
-const PAYDAY_NUMBER = 15;
-
-function getPayday() {
-  const today = dayjs();
-  // Imposta la data di questo mese con il giorno PAYDAY_NUMBER
-  let payday = today.date(PAYDAY_NUMBER);
-  // Se oggi è già passato quel giorno, il payday sarà nel mese successivo
-  if (today.isAfter(payday)) {
-    payday = today.add(1, 'month').date(PAYDAY_NUMBER);
-  }
-  return payday;
-}
-
-const PAYDAY = getPayday();
-
-function getRemainingTimeDays() {
-  const now = dayjs();
-  // Restituisce il numero di giorni rimanenti (come numero reale)
-  return PAYDAY.diff(now, 'days', true);
-}
-
-const Home = (): JSX.Element => {
-  const theme = useThemeStore(s => s.theme);
-  const colors = Colors[theme];
-
-  const [isModalVisible, setModalVisible] = useState(false);
-  const [remainingDays, setRemainingDays] = useState(getRemainingTimeDays());
-  const totalDaysInit = useRef(getRemainingTimeDays()).current;
+  const {loadPayday} = usePaydayStore();
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setRemainingDays(getRemainingTimeDays());
-    }, 1000);
-
-    return () => clearInterval(interval);
+    i18n.init();
+    loadPayday();
+    loadLanguage();
+    loadTheme();
   }, []);
 
-  const handleSavePayday = (newPayday: number) => {
-    console.log(newPayday);
-  };
-
-  const progress = 1 - remainingDays / totalDaysInit;
-
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: colors.BACKGROUND,
-      width: '100%'
-    },
-    textContainer: {
-      alignItems: 'center'
-    },
-    timerText: {
-      color: colors.PRIMARY,
-      fontSize: 80,
-      fontWeight: 'bold',
-      fontFamily: 'Lato-Bold'
-    },
-    paydayCard: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      padding: 5,
-      width: '75%',
-      borderWidth: 2,
-      borderColor: colors.BORDER,
-      borderRadius: 8,
-      marginTop: 80,
-      backgroundColor: colors.BACKGROUND
-    },
-    paydaySquare: {
-      width: 80,
-      height: 80,
-      backgroundColor: colors.PRIMARY,
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderRadius: 4,
-      marginRight: 16
-    },
-    paydaySquareText: {
-      color: colors.TEXT_BUTTON,
-      fontSize: 50,
-      fontWeight: 'bold'
-    },
-    paydayCardText: {
-      fontSize: 16,
-      color: colors.TEXT_SECONDARY,
-      fontWeight: '600'
-    },
-    paydayCardDate: {
-      fontSize: 20,
-      color: colors.PRIMARY,
-      fontWeight: '800',
-      marginTop: 4
-    },
-    changePaydayButton: {
-      marginTop: 50
-    }
-  });
-
   return (
-    <>
-      <ChangePaydayModal
-        visible={isModalVisible}
-        onClose={() => setModalVisible(false)}
-        onSave={handleSavePayday}
-        currentPayday={PAYDAY.date()}
-      />
+    <View style={{flex: 1, backgroundColor: colors.BACKGROUND}}>
+      <StatusBar barStyle={theme === 'light' ? 'dark-content' : 'light-content'} backgroundColor={colors.BACKGROUND} />
 
-      <View style={styles.container}>
-        <StatusBar barStyle={theme === 'dark' ? 'light-content' : 'dark-content'} backgroundColor={colors.BACKGROUND} />
+      <NotificationManager />
 
-        <AnimatedCircularProgress
-          size={300}
-          width={15}
-          fill={progress * 100}
-          tintColor={colors.PRIMARY}
-          backgroundColor={colors.TEXT_BUTTON}
-          rotation={0}
-          lineCap="round"
-        >
-          {() => (
-            <View style={styles.textContainer}>
-              <Text style={styles.timerText}>{Math.ceil(remainingDays)}</Text>
-            </View>
-          )}
-        </AnimatedCircularProgress>
+      <AppBar />
 
-        <View style={styles.paydayCard}>
-          <View style={styles.paydaySquare}>
-            <Text style={styles.paydaySquareText}>{PAYDAY.date()}</Text>
-          </View>
-
-          <View>
-            <Text style={styles.paydayCardText}>Prossimo stipendio:</Text>
-            <Text style={styles.paydayCardDate}>{PAYDAY.format('DD MMMM YYYY')}</Text>
-          </View>
-        </View>
-
-        <CustomButton
-          title="Cambia giorno"
-          onPress={() => setModalVisible(true)}
-          variant="outline"
-          style={styles.changePaydayButton}
-        />
-      </View>
-    </>
+      <Stack screenOptions={{headerShown: false, animation: 'flip'}} />
+    </View>
   );
 };
 
-export default Home;
+export default Layout;

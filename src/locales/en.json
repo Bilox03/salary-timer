@@ -1,0 +1,24 @@
+{
+  "theme": "Theme",
+  "light": "LIGHT",
+  "dark": "DARK",
+  "amoled": "AMOLED",
+  "language": "Language",
+  "privacy_policy": "📜 Privacy Policy",
+  "next_payday": "Next payday:",
+  "change_day": "Change day",
+  "choose_payday": "Choose payday",
+  "cancel": "Cancel",
+  "save": "Save",
+  "notifications": {
+    "title": "👋 Hey!",
+    "messages": [
+      "Have you done something for yourself today?",
+      "Take a break ☕",
+      "You're on the right track 🚀",
+      "Don't give up now 💪",
+      "A small step is always better than nothing",
+      "Hey, you're enough. Always. ✨"
+    ]
+  }
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import {TouchableOpacity, Text, StyleSheet, ActivityIndicator, ViewStyle} from 'react-native';
-import {Colors, ThemeColors} from 'src/config/colors';
-import {useThemeStore} from 'src/store/themeStore';
+import {Colors} from '@/config/colors';
+import {useThemeStore} from '@/store/themeStore';
 
 type ButtonVariant = 'primary' | 'secondary' | 'outline';
 
