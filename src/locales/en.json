@@ -10,15 +10,19 @@
   "choose_payday": "Choose payday",
   "cancel": "Cancel",
   "save": "Save",
+  "settings": "Settings",
   "notifications": {
-    "title": "👋 Hey!",
-    "messages": [
-      "Have you done something for yourself today?",
+    "title": [
+      "Even small progress counts. Keep going! 🏆",
+      "Don't give up, your next paycheck is on its way! ✨",
+      "A small step today can make a big difference tomorrow. 🌱",
       "Take a break ☕",
-      "You're on the right track 🚀",
-      "Don't give up now 💪",
-      "A small step is always better than nothing",
-      "Hey, you're enough. Always. ✨"
-    ]
+      "You're on the right track! 🚀",
+      "Don't stop now 💪",
+      "Hey, you're enough. Always. ✨",
+      "Remember to save something for the future! 💰",
+      "Have you already planned how to use your next paycheck? 📝"
+    ],
+    "body": "Find out how many days are left until your payday!"
   }
 }

@@ -94,7 +94,9 @@ const Settings: React.FC = () => {
             {icon: '🇪🇸', value: 'es'}
           ].map(({icon, value}) => (
             <TouchableOpacity key={value} onPress={() => setLanguage(value)}>
-              <View style={[styles.card, language === value && styles.selectedCard, {backgroundColor: '#f0f0f0'}]}>
+              <View
+                style={[styles.card, language === value && styles.selectedCard, {backgroundColor: colors.BACKGROUND}]}
+              >
                 <Text style={{fontSize: 24}}>{icon}</Text>
               </View>
             </TouchableOpacity>

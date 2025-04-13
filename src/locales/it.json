@@ -10,15 +10,19 @@
   "choose_payday": "Scegli giorno dello stipendio",
   "cancel": "Annulla",
   "save": "Salva",
+  "settings": "Impostazioni",
   "notifications": {
-    "title": "👋 Hey!",
-    "messages": [
-      "Hai già fatto qualcosa per te oggi?",
+    "title": [
+      "Anche i piccoli progressi contano. Continua così! 🏆",
+      "Non mollare, il tuo prossimo stipendio è in arrivo! ✨",
+      "Un piccolo passo oggi può fare una grande differenza domani. 🌱",
       "Prenditi una pausa ☕",
       "Sei sulla strada giusta 🚀",
       "Non mollare proprio ora 💪",
-      "Un piccolo passo è sempre meglio di niente",
-      "Ehi, sei abbastanza. Sempre. ✨"
-    ]
+      "Ehi, sei abbastanza. Sempre. ✨",
+      "Ricorda di risparmiare qualcosa per il futuro! 💰",
+      "Hai già pianificato come utilizzare il tuo prossimo stipendio? 📝"
+    ],
+    "body": "Scopri quanti giorni mancano al tuo stipendio!"
   }
 }

@@ -10,15 +10,19 @@
   "choose_payday": "Elige el día de pago",
   "cancel": "Cancelar",
   "save": "Guardar",
+  "settings": "Configuración",
   "notifications": {
-    "title": "👋 ¡Hola!",
-    "messages": [
-      "¿Has hecho algo por ti hoy?",
+    "title": [
+      "¡Incluso los pequeños progresos cuentan! ¡Sigue así! 🏆",
+      "No te rindas, ¡tu próximo sueldo está en camino! ✨",
+      "Un pequeño paso hoy puede marcar una gran diferencia mañana. 🌱",
       "Tómate un descanso ☕",
-      "Vas por buen camino 🚀",
-      "No te rindas ahora 💪",
-      "Un pequeño paso siempre es mejor que nada",
-      "Oye, eres suficiente. Siempre. ✨"
-    ]
+      "¡Vas por buen camino! 🚀",
+      "No te detengas ahora 💪",
+      "Oye, eres suficiente. Siempre. ✨",
+      "¡Recuerda ahorrar algo para el futuro! 💰",
+      "¿Ya has planeado cómo usar tu próximo sueldo? 📝"
+    ],
+    "body": "¡Descubre cuántos días faltan para tu sueldo!"
   }
 }

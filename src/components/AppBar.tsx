@@ -4,9 +4,11 @@ import {Ionicons} from '@expo/vector-icons';
 import {useThemeStore} from '@/store/themeStore';
 import {Colors} from '@/config/colors';
 import {usePathname, useRouter} from 'expo-router';
+import {useTranslation} from 'react-i18next';
 
 const AppBar = () => {
   const colors = Colors[useThemeStore(s => s.theme)];
+  const {t} = useTranslation();
 
   const router = useRouter();
   const pathName = usePathname();
@@ -33,14 +35,18 @@ const AppBar = () => {
 
   const TITLES = {
     '/': '',
-    '/settings': 'IMPOSTAZIONI'
+    '/settings': t('settings')
   };
 
   return (
     <View style={styles.appBar}>
       <View style={styles.leftSection}>
         <TouchableOpacity onPress={() => (isSettingsPage ? router.back() : router.push('/settings'))}>
-          <Ionicons name={isSettingsPage ? 'home-outline' : 'settings-outline'} size={24} color={colors.TEXT_PRIMARY} />
+          <Ionicons
+            name={isSettingsPage ? 'arrow-undo-outline' : 'settings-outline'}
+            size={24}
+            color={colors.TEXT_PRIMARY}
+          />
         </TouchableOpacity>
       </View>
 
