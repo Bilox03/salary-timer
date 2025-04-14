@@ -1,24 +1,49 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "jsx": "react-native",
+    // === Output & Module Resolution ===
+    "noEmit": true,
     "target": "esnext",
-    "module": "commonjs",
-    "lib": ["esnext", "dom"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowJs": true,
+
+    // === JSX & React Native Support ===
+    "jsx": "react-native",
+    "isolatedModules": true,
+
+    // === Type Checking & Strictness ===
+    "strict": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "useUnknownInCatchVariables": true,
+
+    // === Module Interop & Imports ===
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+
+    // === File Handling & Performance ===
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
-    "allowJs": true,
-    "noFallthroughCasesInSwitch": true,
+    "incremental": true,
+
+    // === Base Path & Aliases ===
     "baseUrl": "./src",
     "paths": {
       "@/*": ["*"]
-    }
+    },
+
+    // === Custom Types ===
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+
+    // === Linting & Safety Enhancements ===
+    "noFallthroughCasesInSwitch": true
   },
-  "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"],
+  "exclude": ["node_modules", "jest.config.js", "dist", "build", "web-build", ".expo"],
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
 }
