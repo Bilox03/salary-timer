@@ -1,48 +1,40 @@
 {
   "expo": {
-    "name": "stipendio-timer",
+    "name": "Stipendio Timer",
     "slug": "stipendio-timer",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "icon": "./assets/images/logo.png",
+    "scheme": "stipendiotimer",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.bilox.stipendiotimer",
+      "buildNumber": "1"
     },
     "android": {
+      "package": "com.bilox.stipendiotimer",
+      "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/images/logo_nobg.png",
+        "backgroundColor": "#1a1a1a"
       }
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
-    },
-    "notification": {
-      "icon": "./assets/images/react-logo.png",
-      "color": "#000000",
-      "badge": true
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
+          "image": "./assets/images/logo_nobg.png",
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "backgroundColor": "#1a1a1a"
         }
       ],
       [
         "expo-notifications",
         {
-          "icon": "./assets/images/react-logo.png",
-          "color": "#ffffff",
+          "icon": "./assets/images/logo.png",
+          "color": "#1a1a1a",
           "sounds": [],
           "mode": "production"
         }
