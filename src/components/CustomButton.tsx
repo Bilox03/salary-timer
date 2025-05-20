@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, Text, StyleSheet, ActivityIndicator, ViewStyle} from 'react-native';
+import {TouchableOpacity, Text, StyleSheet, ActivityIndicator, ViewStyle, TextStyle} from 'react-native';
 import {Colors} from '@/config/colors';
 import {useThemeStore} from '@/store/themeStore';
 
@@ -11,10 +11,19 @@ type Props = {
   loading?: boolean;
   disabled?: boolean;
   variant?: ButtonVariant;
-  style?: ViewStyle;
+  buttonStyle?: ViewStyle;
+  textStyle?: TextStyle;
 };
 
-const CustomButton = ({title, onPress, loading = false, disabled = false, variant = 'primary', style = {}}: Props) => {
+const CustomButton = ({
+  title,
+  onPress,
+  loading = false,
+  disabled = false,
+  variant = 'primary',
+  buttonStyle = {},
+  textStyle = {}
+}: Props) => {
   const {theme} = useThemeStore();
   const colors = Colors[theme];
 
@@ -45,12 +54,13 @@ const CustomButton = ({title, onPress, loading = false, disabled = false, varian
       backgroundColor: getBackgroundColor(),
       borderColor: getBorderColor(),
       opacity: disabled ? 0.6 : 1,
-      ...style
+      ...buttonStyle
     },
     text: {
       fontSize: 16,
       fontWeight: '600',
-      color: getTextColor()
+      color: getTextColor(),
+      ...textStyle
     }
   });
 

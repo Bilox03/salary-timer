@@ -11,6 +11,9 @@
   "cancel": "Cancelar",
   "save": "Guardar",
   "settings": "Configuración",
+  "welcome_title": "¡Bienvenido a Stipendio Timer! 😊",
+  "welcome_message": "Esta app te ayudará a llevar la cuenta de los días hasta tu día de pago.\n\n ¡Elige un día del mes y empieza a contar!",
+  "welcome_button": "¡Empecemos!",
   "notifications": {
     "title": [
       "¡Incluso los pequeños progresos cuentan! ¡Sigue así! 🏆",

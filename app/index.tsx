@@ -30,8 +30,8 @@ const Home = (): JSX.Element => {
   const [remainingDays, setRemainingDays] = useState<number>();
   const [elapsedDays, setElapsedDays] = useState<number>();
 
-  const nextPayDate = useMemo(() => getNextPayDate(payday), [payday]);
-  const previousPayDate = useMemo(() => getPreviousPayDate(payday), [payday]);
+  const nextPayDate = useMemo(() => getNextPayDate(payday!), [payday]);
+  const previousPayDate = useMemo(() => getPreviousPayDate(payday!), [payday]);
 
   const totalDaysInit = useRef(nextPayDate.diff(previousPayDate, 'days', true)).current;
 
@@ -40,7 +40,7 @@ const Home = (): JSX.Element => {
     setElapsedDays(getElapsedTimeDays(previousPayDate));
   }, [nextPayDate, previousPayDate]);
 
-  const progress = Math.max(0, Math.min(1, elapsedDays / totalDaysInit));
+  const progress = Math.max(0, Math.min(1, elapsedDays! / totalDaysInit));
 
   const styles = StyleSheet.create({
     container: {
@@ -60,15 +60,15 @@ const Home = (): JSX.Element => {
       <ChangePaydayModal visible={isModalVisible} onClose={() => setModalVisible(false)} />
 
       <View style={styles.container}>
-        <PaydayCircularTimer progress={progress} remainingDays={remainingDays} />
+        <PaydayCircularTimer progress={progress} remainingDays={remainingDays!} />
 
-        <PaydayCard payday={payday} />
+        <PaydayCard payday={payday!} />
 
         <CustomButton
           title={t('change_day')}
           onPress={() => setModalVisible(true)}
           variant="outline"
-          style={styles.changePaydayButton}
+          buttonStyle={styles.changePaydayButton}
         />
       </View>
     </>

@@ -11,6 +11,9 @@
   "cancel": "Annulla",
   "save": "Salva",
   "settings": "Impostazioni",
+  "welcome_title": "Benvenuto in Stipendio Timer! 😊",
+  "welcome_message": "Questa app ti aiuterà a tenere traccia dei giorni che mancano al tuo stipendio.\n\n Scegli un giorno del mese e inizia a contare!",
+  "welcome_button": "Iniziamo!",
   "notifications": {
     "title": [
       "Anche i piccoli progressi contano. Continua così! 🏆",

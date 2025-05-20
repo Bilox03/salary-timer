@@ -12,7 +12,11 @@ const AppBar = () => {
 
   const router = useRouter();
   const pathName = usePathname();
-  const isSettingsPage = pathName === '/settings';
+
+  const TITLES: Record<string, string> = {
+    '/': '',
+    '/settings': t('settings')
+  };
 
   const styles = StyleSheet.create({
     appBar: {
@@ -33,17 +37,12 @@ const AppBar = () => {
     rightSection: {width: '20%'}
   });
 
-  const TITLES = {
-    '/': '',
-    '/settings': t('settings')
-  };
-
   return (
     <View style={styles.appBar}>
       <View style={styles.leftSection}>
-        <TouchableOpacity onPress={() => (isSettingsPage ? router.back() : router.push('/settings'))}>
+        <TouchableOpacity onPress={() => (pathName === '/settings' ? router.back() : router.push('/settings'))}>
           <Ionicons
-            name={isSettingsPage ? 'arrow-undo-outline' : 'settings-outline'}
+            name={pathName === '/settings' ? 'arrow-undo-outline' : 'settings-outline'}
             size={24}
             color={colors.TEXT_PRIMARY}
           />

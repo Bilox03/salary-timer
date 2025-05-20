@@ -72,7 +72,7 @@ const NotificationManager = () => {
       const permissionGranted = await requestNotificationPermission();
       if (!permissionGranted) return;
 
-      sendImmediateNotification(t);
+      //sendImmediateNotification(t);
       scheduleDailyRandomNotifications(t);
     })();
   }, [t]);

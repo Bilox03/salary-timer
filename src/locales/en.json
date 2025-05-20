@@ -11,6 +11,9 @@
   "cancel": "Cancel",
   "save": "Save",
   "settings": "Settings",
+  "welcome_title": "Welcome to Stipendio Timer! 😊",
+  "welcome_message": "This app will help you track the days until your payday.\n\n Choose a day of the month and start counting!",
+  "welcome_button": "Let's start!",
   "notifications": {
     "title": [
       "Even small progress counts. Keep going! 🏆",

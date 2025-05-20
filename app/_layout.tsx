@@ -1,6 +1,6 @@
-import {Stack} from 'expo-router';
-import {useEffect} from 'react';
-import {StatusBar, View} from 'react-native';
+import {Redirect, Stack, usePathname} from 'expo-router';
+import {useEffect, useState} from 'react';
+import {ActivityIndicator, StatusBar, View} from 'react-native';
 import AppBar from '@/components/AppBar';
 import NotificationManager from '@/components/NotificationManager';
 import {Colors} from '@/config/colors';
@@ -13,23 +13,62 @@ const Layout = () => {
   const {loadLanguage} = useLanguageStore();
   const colors = Colors[useThemeStore(s => s.theme)];
   const {theme, loadTheme} = useThemeStore();
+  const pathname = usePathname();
 
-  const {loadPayday} = usePaydayStore();
+  const {loadPayday, payday} = usePaydayStore();
+
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    i18n.init();
-    loadPayday();
-    loadLanguage();
-    loadTheme();
+    initApp();
   }, []);
+
+  const initApp = async () => {
+    try {
+      setIsLoading(true);
+
+      console.log('Caricamento payday...');
+      await loadPayday();
+
+      console.log('Inizializzazione i18n...');
+      await i18n.init();
+
+      console.log('Caricamento lingua...');
+      await loadLanguage();
+
+      console.log('Caricamento tema...');
+      await loadTheme();
+
+      console.log('Inizializzazione completata.');
+    } catch (error) {
+      console.error("Errore durante l'inizializzazione:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const isWelcome = pathname === '/welcome';
+
+  if (isLoading) {
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: colors.BACKGROUND}}>
+        <ActivityIndicator size="large" color={colors.PRIMARY} />
+      </View>
+    );
+  }
 
   return (
     <View style={{flex: 1, backgroundColor: colors.BACKGROUND}}>
       <StatusBar barStyle={theme === 'light' ? 'dark-content' : 'light-content'} backgroundColor={colors.BACKGROUND} />
 
-      <NotificationManager />
+      {!isWelcome && (
+        <>
+          <AppBar />
+          <NotificationManager />
+        </>
+      )}
 
-      <AppBar />
+      {!payday && pathname !== '/welcome' && <Redirect href="/welcome" />}
 
       <Stack screenOptions={{headerShown: false, animation: 'flip'}} />
     </View>
